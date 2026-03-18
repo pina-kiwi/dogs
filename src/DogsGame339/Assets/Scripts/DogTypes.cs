@@ -1,30 +1,10 @@
-using UnityEngine;
-
-public class DogTypes : MonoBehaviour
+enum DogSize
 {
-    //create dog types with different stats
-    //stats include: breed of dog, health #, attack power
-    public float health;
-    public float attackPower;
-    public void Dalmation()
-    {
-        health = 20;
-        attackPower = 5;
-    }
+    Small,  // HP: 14, ATK: 7, SPD: 10
+    Medium, // HP: 20, ATK: 6, SPD: 5
+    Large   // HP: 18, ATK: 8, SPD: 2
+}
 
-    public void Corgi()
-    {
-        health = 15;
-        attackPower = 7;
-
-    }
-
-    public void Pug()
-    {
-        health = 20;
-        attackPower = 3;
-    }
-
-
-    
+enum DogType
+{
 }
