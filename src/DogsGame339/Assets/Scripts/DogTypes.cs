@@ -1,4 +1,4 @@
-enum DogSize
+public enum DogSize
 {
     Small,  // HP: 14, ATK: 7, SPD: 10
     Medium, // HP: 20, ATK: 6, SPD: 5
