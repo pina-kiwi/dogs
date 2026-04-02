@@ -7,7 +7,6 @@ using UnityEngine.Rendering.Universal;
 
 public class Player : MonoBehaviour
 {
-    public Gameer Gameer;
     public SpriteRenderer PlayerSpriteRenderer;
     
     public void OnTriggerEnter2D(Collider2D collision)
@@ -29,10 +28,6 @@ public class Player : MonoBehaviour
 
     public void MoveManually(Vector2 direction)
     {
-        if (!Gameer.IsPlaying)
-        {
-            return;
-        }
         Move(direction);
     }
 
