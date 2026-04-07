@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEngine;
 
 namespace Game339.Shared.Models
 {
