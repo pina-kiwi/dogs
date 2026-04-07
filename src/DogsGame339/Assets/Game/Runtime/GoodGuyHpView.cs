@@ -24,9 +24,15 @@ namespace Game.Runtime
 
         public bool useAlternativeMessage;
 
-        protected override void Subscribe() => GameState.GoodGuy.Health.ChangeEvent += OnGoodGuyHealthChange;
+        protected override void Subscribe()
+        {
+            GameState.GoodGuy.Health.ChangeEvent += OnGoodGuyHealthChange;
+        }
 
-        protected override void Unsubscribe() => GameState.GoodGuy.Health.ChangeEvent -= OnGoodGuyHealthChange;
+        protected override void Unsubscribe()
+        {
+            GameState.GoodGuy.Health.ChangeEvent -= OnGoodGuyHealthChange;
+        }
 
         private void OnGoodGuyHealthChange(int health)
         {

@@ -8,5 +8,10 @@ namespace Game339.Shared.Models
         public ObservableValue<int> Health { get; } = new();
         public ObservableValue<int> Damage { get; } = new();
         public ObservableValue<int> Armor { get; } = new();
+        
+        public void TakeDamage(int amount)
+        {
+            Health.Value = Math.Max(0, Health.Value - amount);
+        }
     }
 }

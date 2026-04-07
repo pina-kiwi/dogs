@@ -27,6 +27,11 @@ namespace Game.Runtime
             gameState.BadGuy.Name.Value = "Bad Sandy";
             gameState.BadGuy.Health.Value = 10;
             gameState.BadGuy.Damage.Value = 1;
+            
+            gameState.BadGuy.Name.Value = "Player";
+            gameState.Player.Health.Value = 3;
+            gameState.Player.Damage.Value = 1;
+            
             container.RegisterSingletonInstance(gameState);
 
             var damageService = new DamageService(logger);
