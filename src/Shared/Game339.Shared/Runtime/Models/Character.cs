@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Game339.Shared.Models
 {
@@ -8,5 +9,11 @@ namespace Game339.Shared.Models
         public ObservableValue<int> Health { get; } = new();
         public ObservableValue<int> Damage { get; } = new();
         public ObservableValue<int> Armor { get; } = new();
+
+        // <-- TakeDamage must be inside the class!
+        public void TakeDamage(int amount)
+        {
+            Health.Value = Mathf.Max(0, Health.Value - amount);
+        }
     }
 }
