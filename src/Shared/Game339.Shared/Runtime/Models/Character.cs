@@ -13,5 +13,10 @@ namespace Game339.Shared.Models
         {
             Health.Value = Math.Max(0, Health.Value - amount);
         }
+
+        public void GainHealth(int amount)
+        {
+            Health.Value = Math.Max(0, Health.Value + amount);
+        }
     }
 }

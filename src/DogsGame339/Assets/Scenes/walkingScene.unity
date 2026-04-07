@@ -2766,7 +2766,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   PlayerSpriteRenderer: {fileID: 643103714}
+  DogSpriteRenderer: {fileID: 430084919}
   fightScene: combatScene
+  pixelsPerHealth: 15
 --- !u!212 &643103714
 SpriteRenderer:
   serializedVersion: 2
