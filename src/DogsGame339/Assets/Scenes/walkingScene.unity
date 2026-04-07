@@ -2690,6 +2690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   PlayerSpriteRenderer: {fileID: 643103714}
+  fightScene: combatScene
 --- !u!212 &643103714
 SpriteRenderer:
   serializedVersion: 2

@@ -4,14 +4,17 @@ using System.Collections;
 using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     public SpriteRenderer PlayerSpriteRenderer;
+    public string fightScene;
     
     public void OnTriggerEnter2D(Collider2D collision)
     {
         print("bam " + collision.gameObject.tag);
+        SceneManager.LoadScene(fightScene);
     }
     
     public void Move(Vector2 direction)
