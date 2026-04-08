@@ -25,7 +25,7 @@ namespace Game.Runtime
             var gameState = ServiceResolver.Resolve<GameState>();
             var damageService = ServiceResolver.Resolve<IDamageService>();
         
-            var dmg = damageService.CalculateDamage(gameState.BadGuy, gameState.GoodGuy);
+            int dmg = damageService.CalculateDamage(gameState.BadGuy, gameState.GoodGuy);
             damageService.ApplyDamage(gameState.GoodGuy, dmg);
         }
 

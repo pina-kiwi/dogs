@@ -1,19 +1,17 @@
-using UnityEngine;
-
 namespace battle
 {
-    public abstract class BattleDog : MonoBehaviour
+    public abstract class BattleDog : DogObject
     {
-        public float Health { get; protected set; }
-        public readonly DogSize Size;
-        
-        public readonly int MaxHealth;
-        public readonly int AttackPower;
-        public readonly int Speed;
-        
-        private readonly Sprite _sprite;
+        public BattleDog Opponent { set; protected get; }
 
-        public abstract void Attack();
-        public abstract void Flee();
+        public virtual void Attack() {
+            Opponent.TakeDamage(AttackPower);
+            BattleStage.NextTurn();
+        }
+        public virtual void Flee() {
+            BattleStage.EndBattle();
+        }
+
+        public void TakeDamage(int damage) => Card.TakeDamage(damage);
     }
 }
