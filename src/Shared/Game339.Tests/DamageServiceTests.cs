@@ -6,7 +6,7 @@ namespace Game339.Tests;
 
 public class DamageServiceTests
 {
-    private static Character CreateCharacter(int health, int damage, int armor)
+    private static Character CreateCharacter(int health, int damage, int speed)
     {
         var c = new Character();
         c.Name.Value = Guid.NewGuid().ToString();
@@ -32,8 +32,8 @@ public class DamageServiceTests
     public void CalculateDamage_Can_Be_Negative_When_Speed_Exceeds_Damage()
     {
         var svc = new DamageService(EmptyGameLog.Instance);
-        var attacker = CreateCharacter(health: 100, damage: 5, armor: 0);
-        var defender = CreateCharacter(health: 100, damage: 0, armor: 8);
+        var attacker = CreateCharacter(health: 100, damage: 5, speed: 0);
+        var defender = CreateCharacter(health: 100, damage: 0, speed: 8);
 
         var dmg = svc.CalculateDamage(attacker, defender);
 
@@ -44,7 +44,7 @@ public class DamageServiceTests
     public void ApplyDamage_Reduces_Health_By_Specified_Amount()
     {
         var svc = new DamageService(EmptyGameLog.Instance);
-        var defender = CreateCharacter(health: 20, damage: 0, armor: 0);
+        var defender = CreateCharacter(health: 20, damage: 0, speed: 0);
 
         svc.ApplyDamage(defender, 7);
 
@@ -55,7 +55,7 @@ public class DamageServiceTests
     public void ApplyDamage_Allows_Health_To_Go_Negative_When_Damage_Exceeds_Health()
     {
         var svc = new DamageService(EmptyGameLog.Instance);
-        var defender = CreateCharacter(health: 5, damage: 0, armor: 0);
+        var defender = CreateCharacter(health: 5, damage: 0, speed: 0);
 
         svc.ApplyDamage(defender, 10);
 
