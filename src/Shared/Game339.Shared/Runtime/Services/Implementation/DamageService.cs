@@ -22,7 +22,7 @@ namespace Game339.Shared.Services.Implementation
         
         public int CalculateDamage(Character attacker, Character defender)
         {
-            var damage = DidAttackHit(defender.Speed) ? attacker.Damage.Value : 0;
+            var damage = DidAttackHit(defender.Speed) ? attacker.AttackPower.Value : 0;
             _gameLog.Info($"{attacker.Name} attacked {defender.Name} for {damage} damage");
             return damage;
         }

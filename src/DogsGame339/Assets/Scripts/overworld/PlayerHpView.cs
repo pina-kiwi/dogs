@@ -1,53 +1,68 @@
-using System;
 using Game.Runtime;
-using Game339.Shared;
 using Game339.Shared.Models;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace overworld
 {
-
     public class PlayerHpView : ObserverMonoBehaviour
     {
-        [SerializeField] private GameObject fullHeart, halfHeart, emptyHeart;
-        
+        [SerializeField] private Sprite fullHeart, halfHeart, emptyHeart;
+        [SerializeField] private GameObject heartPrefab;
+        private bool _maxHealthSet;
+
+        private int MaxHealth { get {
+            int maxHealth_holder = GameState.Player.MaxHealth.Value;
+            if (maxHealth_holder == int.MaxValue) maxHealth_holder = GameState.Player.Health.Value;
+            return maxHealth_holder;
+        } }
+
         private static GameState GameState => ServiceResolver.Resolve<GameState>();
-        private static int MaxHealth => GameState.Player.MaxHealth.Value;
-
-        [Serializable]
-        public class ObservableInt : ObservableValue<int>, ISerializationCallbackReceiver
-        {
-            [SerializeField] public int initialValue;
-
-            public void OnAfterDeserialize() => Value = initialValue;
-            public void OnBeforeSerialize() => initialValue = Value;
-        }
 
         protected override void Subscribe()
         {
+            GameState.Player.MaxHealth.ChangeEvent += PlayerMaxHealthChange;
             GameState.Player.Health.ChangeEvent += PlayerHealthChange;
         }
 
         protected override void Unsubscribe()
         {
+            GameState.Player.MaxHealth.ChangeEvent += PlayerMaxHealthChange;
             GameState.Player.Health.ChangeEvent -= PlayerHealthChange;
         }
-
-        private void PlayerHealthChange(int health)
+        
+        private void PlayerMaxHealthChange(int changedMaxHealth)
         {
             //print(health);
-            
-            foreach (Transform child in transform) Destroy(child.gameObject);
 
-            for (int i = 0; i < MaxHealth; i+=2)
+            if (_maxHealthSet) return;
+
+            GameObject[] hearts = GameObject.FindGameObjectsWithTag("Heart");
+            foreach(GameObject heart in hearts) if (heart != null) Destroy(heart);
+            
+            for (int i = 0; i < MaxHealth; i += 2)
             {
-                bool? hasHeart = health > i+1 ? true : null;
-                      hasHeart = health < i+1 ? false : null;
-                      
-                GameObject heart = hasHeart == true ? fullHeart : halfHeart;
-                           heart = hasHeart == false ? emptyHeart : halfHeart;
-                
-                Instantiate(heart, gameObject.transform);
+                Instantiate(heartPrefab, gameObject.transform);
+            }
+            _maxHealthSet = true;
+        }
+
+        private void PlayerHealthChange(int changedHealth)
+        {
+            int health_holder = GameState.Player.Health.Value;
+            
+            foreach(Transform child in gameObject.transform)
+            {
+                health_holder -= 2;
+                Image image = child.GetComponent<Image>();
+
+                image.sprite = health_holder switch
+                {
+                    > -1 => fullHeart,
+                    -1 => halfHeart,
+                    _ => image.sprite
+                };
+                if (health_holder < -1) break;
             }
         }
     }

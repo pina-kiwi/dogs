@@ -1,22 +1,24 @@
+using Game.Runtime;
+using Game339.Shared.Models;
 using UnityEngine;
 
 namespace battle
 {
     public class PlayerDog : BattleDog
     {
-        private void Awake() => BattleStage.PlayerDog = this;
+        protected override Character Owner => ServiceResolver.Resolve<GameState>().Player;
 
-        public override void Attack()
+        protected override void Attack()
         {
             Debug.Log("Player's dog attacks!");
+            opponent.TakeDamage(Owner.AttackPower.Value);
             base.Attack();
         }
 
-        public override void Flee()
+        protected override void Flee()
         {
             Debug.Log("Player's dog turns tail and runs away!");
-            Opponent.Attack();
-            base.Flee();
+            BattleManager.EndBattle();
         }
 
         public void Check()

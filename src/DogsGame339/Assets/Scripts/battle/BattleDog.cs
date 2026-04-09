@@ -1,17 +1,25 @@
+using Game339.Shared.Models;
+using UnityEngine;
+
 namespace battle
 {
     public abstract class BattleDog : DogObject
     {
-        public BattleDog Opponent { set; protected get; }
+        [SerializeField] protected BattleDog opponent;
+        protected abstract Character Owner { get; }
 
-        public virtual void Attack() {
-            Opponent.TakeDamage(AttackPower);
-            BattleStage.NextTurn();
+        protected virtual void Attack() {
+            BattleManager.NextTurn();
         }
-        public virtual void Flee() {
-            BattleStage.EndBattle();
+        
+        protected virtual void Flee() {
+            BattleManager.EndBattle();
         }
 
-        public void TakeDamage(int damage) => Card.TakeDamage(damage);
+        public virtual void TakeDamage(int damage)
+        {
+            Owner.TakeDamage(damage);
+            if (Owner.Health.Value <= 0) BattleManager.EndBattle();
+        }
     }
 }

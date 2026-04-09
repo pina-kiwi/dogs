@@ -1,4 +1,5 @@
-using battle;
+using Game.Runtime;
+using Game339.Shared.Models;
 using UnityEngine;
 
 namespace overworld
@@ -12,16 +13,13 @@ namespace overworld
             
             if (!player) return;
             
-            BattleStage.StartBattle(Card);
+            GameState gameState = ServiceResolver.Resolve<GameState>();
+
+            Card.SetOwner(gameState.BadGuy);
+            
+            gameState.IsInCombat.Value = true;
         }
 
-        public new static GameObject CreateDog(DogSize size)
-        {
-            GameObject dogObject = WorldDog.CreateDog(size);
-            EnemyDog enemyDogComponent = dogObject.AddComponent<EnemyDog>();
-            enemyDogComponent.SetSize(size);
-            
-            return dogObject;
-        } 
+        public new static GameObject CreateDog(DogSize size) => WorldDog.CreateDog(size);
     }
 }

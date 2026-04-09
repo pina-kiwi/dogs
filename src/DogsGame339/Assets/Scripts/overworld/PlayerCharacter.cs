@@ -13,14 +13,19 @@ namespace overworld
         [SerializeField] private float distanceForHeal = 15f; // You can tweak this to control how far the player needs to move for +1 health
         private float _distanceUntilHeal;
 
-        private PlayerDog _dog;
+        [SerializeField] private GameObject playerView;
+
+        public PlayerDog Dog { get; private set; }
         
         [SerializeField] private SpriteRenderer spriteRenderer;
 
         private void Awake()
         {
-            _dog = PlayerDog.CreateDog(dogSize).GetComponent<PlayerDog>();
-            _dog.gameObject.transform.SetParent(transform);
+            Dog = PlayerDog.CreateDog(dogSize).GetComponent<PlayerDog>();
+            Dog.gameObject.transform.SetParent(transform);
+            
+            Character player = ServiceResolver.Resolve<GameState>().Player;
+            Dog.Card.SetOwner(player);
         }
 
         private void FixedUpdate()
@@ -36,7 +41,8 @@ namespace overworld
             // Calculate distance moved
             Vector3 walkDistance = walkSpeedScale * Time.deltaTime * direction;
             
-            spriteRenderer.transform.Translate(walkDistance);
+            transform.Translate(walkDistance, Space.World);
+            playerView.transform.Translate(walkDistance, Space.World);
 
             //PlayerSpriteRenderer.transform.position = SpriteTools.ConstrainToScreen(PlayerSpriteRenderer);
             
@@ -49,8 +55,9 @@ namespace overworld
 
             bool shouldFlipSprite = direction.x < 0;
             
-            spriteRenderer.flipX = shouldFlipSprite;
-            _dog.FlipX(shouldFlipSprite);
+            int angleToRotate = shouldFlipSprite ? 180 : 0;
+            
+            transform.rotation = Quaternion.Euler(0, angleToRotate, 0);
         }
 
         private void UpdateDistanceUntilHeal(float distanceWalked)

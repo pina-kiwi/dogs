@@ -1,23 +1,36 @@
+using Game.Runtime;
+using Game339.Shared.Models;
 using UnityEngine;
 
 namespace battle
 {
     public class EnemyDog : BattleDog
     {
-        private void Start() => BattleStage.EnemyDog = this;
+        protected override Character Owner => ServiceResolver.Resolve<GameState>().BadGuy;
 
-        public void TakeTurn()
+        private void Start()
         {
-            Attack();
+            Subscribe();
+        }
+
+        private void Subscribe()
+        {
+            BattleManager.IsPlayersTurn.ChangeEvent += TakeTurn;
+        }
+
+        private void TakeTurn(bool isPlayersTurn)
+        {
+            if (!isPlayersTurn) Attack();
         }
         
-        public override void Attack()
+        protected override void Attack()
         {
             Debug.Log("Enemy dog attacks!");
-            base.Attack();
+            ServiceResolver.Resolve<GameState>().Player.TakeDamage(Owner.AttackPower.Value);
+            BattleManager.EndBattle();
         }
 
-        public override void Flee()
+        protected override void Flee()
         {
             Debug.Log("Enemy dog turns tail and runs away!");
             base.Flee();

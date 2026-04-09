@@ -1,3 +1,4 @@
+using Game339.Shared;
 using Game339.Shared.Models;
 
 public enum DogSize
@@ -8,46 +9,46 @@ public enum DogSize
 }
 
 
-public class DogCard : Character
+public class DogCard
 {
-    public DogSize Size { get; private set; }
+    public DogSize Size;
     
-    public DogCard(DogSize size)
+    public ObservableValue<string> Name = new();
+    
+    public DogCard(DogSize size, Character owner = null)
     {
         Size = size;
+        owner ??= new();
         
-        switch (size)
+        SetOwner(owner);
+    }
+
+    public void SetOwner(Character owner)
+    {
+        owner.Dog = this;
+        
+        switch (Size)
         {
             case DogSize.Small:
                 Name.Value = "Small Dog";
-                MaxHealth.Value = 14;
-                Damage.Value = 7;
-                Speed.Value = 8;
+                owner.MaxHealth.Value = 14;
+                owner.AttackPower.Value = 7;
+                owner.Speed.Value = 8;
                 break;
             
             case DogSize.Medium:
                 Name.Value = "Medium Dog";
-                MaxHealth.Value = 20;
-                Damage.Value = 6;
-                Speed.Value = 5;
+                owner.MaxHealth.Value = 20;
+                owner.AttackPower.Value = 6;
+                owner.Speed.Value = 5;
                 break;
             
             case DogSize.Large:
                 Name.Value = "Large Dog";
-                MaxHealth.Value = 18;
-                Damage.Value = 8;
-                Speed.Value = 2;
+                owner.MaxHealth.Value = 18;
+                owner.AttackPower.Value = 8;
+                owner.Speed.Value = 2;
                 break;
         }
-        Health.Value = MaxHealth.Value;
-    }
-
-    public void SetCharacter(Character character)
-    {
-        character.Name.Value = Name.Value;
-        character.Health.Value = Health.Value;
-        character.MaxHealth.Value = MaxHealth.Value;
-        character.Damage.Value = Damage.Value;
-        character.Speed.Value = Speed.Value;
     }
 }
