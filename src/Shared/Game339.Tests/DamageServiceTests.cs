@@ -12,16 +12,16 @@ public class DamageServiceTests
         c.Name.Value = Guid.NewGuid().ToString();
         c.Health.Value = health;
         c.Damage.Value = damage;
-        c.Armor.Value = armor;
+        c.Speed.Value = speed;
         return c;
     }
 
     [Test]
-    public void CalculateDamage_Returns_AttackerDamage_Minus_DefenderArmor()
+    public void CalculateDamage_Returns_AttackerDamage_Minus_DefenderSpeed()
     {
         var svc = new DamageService(EmptyGameLog.Instance);
-        var attacker = CreateCharacter(health: 100, damage: 12, armor: 1);
-        var defender = CreateCharacter(health: 100, damage: 5, armor: 3);
+        var attacker = CreateCharacter(health: 100, damage: 12, speed: 1);
+        var defender = CreateCharacter(health: 100, damage: 5, speed: 3);
 
         var dmg = svc.CalculateDamage(attacker, defender);
 
@@ -29,7 +29,7 @@ public class DamageServiceTests
     }
 
     [Test]
-    public void CalculateDamage_Can_Be_Negative_When_Armor_Exceeds_Damage()
+    public void CalculateDamage_Can_Be_Negative_When_Speed_Exceeds_Damage()
     {
         var svc = new DamageService(EmptyGameLog.Instance);
         var attacker = CreateCharacter(health: 100, damage: 5, armor: 0);
