@@ -5,5 +5,7 @@ namespace Game339.Shared.Models
         public Character GoodGuy { get; } = new();
         public Character BadGuy { get; } = new();
         public Character Player { get; } = new();
+
+        public ObservableValue<bool> IsInCombat = new();
     }
 }

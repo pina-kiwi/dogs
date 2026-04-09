@@ -22,15 +22,8 @@ namespace Game.Runtime
 
             var gameState = new GameState();
             gameState.GoodGuy.Name.Value = "Good Sandy";
-            gameState.GoodGuy.Health.Value = 10;
-            gameState.GoodGuy.Damage.Value = 1;
             gameState.BadGuy.Name.Value = "Bad Sandy";
-            gameState.BadGuy.Health.Value = 10;
-            gameState.BadGuy.Damage.Value = 1;
-            
-            gameState.BadGuy.Name.Value = "Player";
-            gameState.Player.Health.Value = 3;
-            gameState.Player.Damage.Value = 1;
+            gameState.Player.Name.Value = "Player";
             
             container.RegisterSingletonInstance(gameState);
 

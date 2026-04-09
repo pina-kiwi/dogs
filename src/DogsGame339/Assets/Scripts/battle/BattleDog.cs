@@ -1,19 +1,25 @@
+using Game339.Shared.Models;
 using UnityEngine;
 
 namespace battle
 {
-    public abstract class BattleDog : MonoBehaviour
+    public abstract class BattleDog : DogObject
     {
-        public float Health { get; protected set; }
-        public readonly DogSize Size;
-        
-        public readonly int MaxHealth;
-        public readonly int AttackPower;
-        public readonly int Speed;
-        
-        private readonly Sprite _sprite;
+        [SerializeField] protected BattleDog opponent;
+        protected abstract Character Owner { get; }
 
-        public abstract void Attack();
-        public abstract void Flee();
+        protected virtual void Attack() {
+            BattleManager.NextTurn();
+        }
+        
+        protected virtual void Flee() {
+            BattleManager.EndBattle();
+        }
+
+        public virtual void TakeDamage(int damage)
+        {
+            Owner.TakeDamage(damage);
+            if (Owner.Health.Value <= 0) BattleManager.EndBattle();
+        }
     }
 }
