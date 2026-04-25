@@ -105,5 +105,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tile
   baseColor: {fileID: -5878635435401062988, guid: 73e636b06819b6d47ad9c20e9512bc06, type: 3}
-  offsetColor: {fileID: 0}
+  offsetColor: {fileID: 1208040086343421634, guid: 2eb9d79ac9c3dd041a84366cf44f48d8, type: 3}
   spriteRenderer: {fileID: 8851874357673186376}
