@@ -5,9 +5,23 @@ public class Tile : MonoBehaviour
 {
     public Sprite baseColor, offsetColor;
     public SpriteRenderer spriteRenderer;
+    public GameObject highlight;
 
     public void Init(bool isOffset)
     {
         spriteRenderer.sprite = isOffset ? offsetColor : baseColor;
     }
+
+    void OnMouseEnter()
+    {
+        Debug.Log("Hovering " + gameObject.name);
+        highlight.SetActive(true);
+    }
+
+    void OnMouseExit()
+    {
+        highlight.SetActive(false);
+    }
+    
+    
 }
