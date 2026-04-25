@@ -146,15 +146,15 @@ RectTransform:
   m_GameObject: {fileID: 119668040}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 3.77, z: 3.77}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.3699999, y: 1.03298, z: 1.03298}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1494603318}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -6.010008, y: 7.960001}
-  m_SizeDelta: {x: 12.019985, y: 15.919998}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1.48, y: -2.24}
+  m_SizeDelta: {x: 160.89996, y: 27.599998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &119668042
 MonoBehaviour:
@@ -177,10 +177,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 9ebb6ca5ee4094addac513cf8528f1e1, type: 2}
+    m_Font: {fileID: 12800000, guid: 74a5091d8707f334b9a5c31ef71a64ba, type: 3}
     m_FontSize: 0
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 4
@@ -225,15 +225,15 @@ RectTransform:
   m_GameObject: {fileID: 151248992}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5.05, y: 5.05, z: 5.05}
+  m_LocalScale: {x: 1.12, y: 1.12, z: 1.12}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1544586721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 7.0450006}
-  m_SizeDelta: {x: 0, y: 14.089999}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -3.21}
+  m_SizeDelta: {x: 160, y: 33.39}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &151248994
 MonoBehaviour:
@@ -256,10 +256,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 9ebb6ca5ee4094addac513cf8528f1e1, type: 2}
+    m_Font: {fileID: 12800000, guid: 74a5091d8707f334b9a5c31ef71a64ba, type: 3}
     m_FontSize: 0
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 4
@@ -383,15 +383,15 @@ RectTransform:
   m_GameObject: {fileID: 276251878}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.59, y: 3.59, z: 3.59}
+  m_LocalScale: {x: 0.92, y: 0.92, z: 0.92}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1556287666}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -4.4000125, y: 7.7699995}
-  m_SizeDelta: {x: 8.799975, y: 15.540001}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.399971, y: -1.85}
+  m_SizeDelta: {x: 159.19995, y: 28.58}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &276251880
 MonoBehaviour:
@@ -414,10 +414,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 9ebb6ca5ee4094addac513cf8528f1e1, type: 2}
+    m_Font: {fileID: 12800000, guid: 74a5091d8707f334b9a5c31ef71a64ba, type: 3}
     m_FontSize: 0
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 4
@@ -447,6 +447,7 @@ GameObject:
   - component: {fileID: 592686347}
   - component: {fileID: 592686346}
   - component: {fileID: 592686345}
+  - component: {fileID: 592686348}
   m_Layer: 5
   m_Name: StartButton
   m_TagString: Untagged
@@ -517,7 +518,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 592686346}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 592686348}
+        m_TargetAssemblyTypeName: MainMenuButtons, Assembly-CSharp
+        m_MethodName: OnStartButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &592686346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -556,6 +569,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 592686343}
   m_CullTransparentMesh: 1
+--- !u!114 &592686348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592686343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23274ce807bf8d43b61c520d586b272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MainMenuButtons
 --- !u!1 &612219603
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,15 +802,15 @@ RectTransform:
   m_GameObject: {fileID: 1417702876}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6.15, y: 3.85, z: 0}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.15, y: 0.71991867, z: 0}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 592686344}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -7.060005, y: 7.6449995}
-  m_SizeDelta: {x: 14.119992, y: 15.290001}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 2.449997, y: -0.66}
+  m_SizeDelta: {x: 155.1, y: 34.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1417702878
 MonoBehaviour:
@@ -808,15 +833,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 9ebb6ca5ee4094addac513cf8528f1e1, type: 2}
+    m_Font: {fileID: 12800000, guid: 74a5091d8707f334b9a5c31ef71a64ba, type: 3}
     m_FontSize: 0
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
-    m_MaxSize: 50
+    m_MaxSize: 55
     m_Alignment: 4
     m_AlignByGeometry: 0
-    m_RichText: 1
+    m_RichText: 0
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
@@ -841,6 +866,7 @@ GameObject:
   - component: {fileID: 1494603321}
   - component: {fileID: 1494603320}
   - component: {fileID: 1494603319}
+  - component: {fileID: 1494603322}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -911,7 +937,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1494603320}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1494603322}
+        m_TargetAssemblyTypeName: MainMenuButtons, Assembly-CSharp
+        m_MethodName: OnExitButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1494603320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -950,6 +988,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1494603317}
   m_CullTransparentMesh: 1
+--- !u!114 &1494603322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494603317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23274ce807bf8d43b61c520d586b272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MainMenuButtons
 --- !u!1 &1544586720
 GameObject:
   m_ObjectHideFlags: 0
@@ -962,6 +1012,7 @@ GameObject:
   - component: {fileID: 1544586724}
   - component: {fileID: 1544586723}
   - component: {fileID: 1544586722}
+  - component: {fileID: 1544586725}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -1008,7 +1059,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1032,7 +1083,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1544586723}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1544586725}
+        m_TargetAssemblyTypeName: MainMenuButtons, Assembly-CSharp
+        m_MethodName: OnTitleButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1544586723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1046,7 +1109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1071,6 +1134,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544586720}
   m_CullTransparentMesh: 1
+--- !u!114 &1544586725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544586720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23274ce807bf8d43b61c520d586b272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MainMenuButtons
 --- !u!1 &1556287665
 GameObject:
   m_ObjectHideFlags: 0
@@ -1083,6 +1158,7 @@ GameObject:
   - component: {fileID: 1556287669}
   - component: {fileID: 1556287668}
   - component: {fileID: 1556287667}
+  - component: {fileID: 1556287670}
   m_Layer: 5
   m_Name: TutorialButton
   m_TagString: Untagged
@@ -1153,7 +1229,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1556287668}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1556287670}
+        m_TargetAssemblyTypeName: MainMenuButtons, Assembly-CSharp
+        m_MethodName: OnTutorialButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1556287668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1192,6 +1280,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1556287665}
   m_CullTransparentMesh: 1
+--- !u!114 &1556287670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556287665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23274ce807bf8d43b61c520d586b272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MainMenuButtons
 --- !u!1 &2128875976
 GameObject:
   m_ObjectHideFlags: 0
