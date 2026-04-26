@@ -1,15 +1,33 @@
+using Game339.Shared.Diagnostics;
+using Game339.Shared.Services.Implementation;
 using UnityEngine;
+
 
 public class GridManager : MonoBehaviour
 {
     public int width, height;
     public Tile tile;
+    public GameObject collectable;
+    public GameObject smallDog;
+    public GameObject player;
+    
+    public SpriteRenderer spriteRenderer;
+
+    private readonly IGameLog _gameLog;
 
     public Transform cam;
+
+    public GridManager(IGameLog gameLog)
+    {
+        _gameLog = gameLog;
+    }
 
     void Start()
     {
         GenerateGrid();
+        PlaceDogs();
+        PlaceCollectables();
+        PlacePlayer();
     }
     
     void GenerateGrid()
@@ -26,5 +44,41 @@ public class GridManager : MonoBehaviour
             }
         }
         cam.transform.position = new Vector3((float)width/2-.5f, (float)height/2, -10);
+    }
+
+    void PlacePlayer()
+    {
+        Place(player);
+    }
+    
+    private void PlaceDogs()
+    {
+        //randomize dog placement
+        Place(smallDog);
+    }
+
+    private void PlaceCollectables()
+    {
+        //randomize bone placement
+        Place(collectable);
+    }
+
+    Vector2 getRandomTile()
+    {
+        float x = Random.Range(0,width-1);
+        float y = Random.Range(0,height-1);
+        
+        return new Vector2(x,y);
+    }
+
+    void Place(GameObject placeable)
+    {
+        Vector3 randomTile = getRandomTile();
+        //_gameLog.Info($"Placing {placeable.name} at {randomTile}");
+        //Debug.Log(randomTile);
+        var spawnedPlaceable = Instantiate(placeable, new Vector3(randomTile.x, randomTile.y, 10), Quaternion.identity);
+        //spawnedPlaceable.name = name + ": " + randomTile.x + ", " + randomTile.y + ", " + randomTile.z;
+        
+        placeable.transform.position = randomTile;
     }
 }

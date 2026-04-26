@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,8 +15,13 @@ public class Tile : MonoBehaviour
 
     void OnMouseEnter()
     {
-        Debug.Log("Hovering " + gameObject.name);
+        Debug.Log("Hovering " + name);
         highlight.SetActive(true);
+    }
+
+    private void OnMouseDown()
+    {
+        throw new NotImplementedException();
     }
 
     void OnMouseExit()
