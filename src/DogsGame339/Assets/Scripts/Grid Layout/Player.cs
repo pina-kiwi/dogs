@@ -3,7 +3,15 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    private void FixedUpdate()
+    public float moveSpeed = 5f;
+    public float tileSize = 1f;
+    public SpriteRenderer spriteRenderer;
+
+    private bool isMoving = false;
+    private Vector3 targetPos;
+    
+    
+   private void FixedUpdate()
     {
         Vector2 inputDirection = InputSystem.actions["Move"].ReadValue<Vector2>();
         Walk(inputDirection);
@@ -13,7 +21,8 @@ public class Player : MonoBehaviour
     {
         //Debug.Log(direction);
         FaceDirection(direction);
-        this.transform.position = direction;
+        //this.transform.position = direction +
+        spriteRenderer.transform.position = new Vector2(transform.position.x + direction.x , transform.position.y + direction.y );
     }
     
     private void FaceDirection(Vector2 direction)
@@ -26,4 +35,5 @@ public class Player : MonoBehaviour
             
         transform.rotation = Quaternion.Euler(0, angleToRotate, 0);
     }
+
 }
