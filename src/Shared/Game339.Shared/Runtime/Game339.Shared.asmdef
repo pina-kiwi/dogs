@@ -1,4 +1,5 @@
 {
   "name": "Game339.Shared",
-  "autoReferenced": true
+  "autoReferenced": true,
+  "references":[ "UnityEngine.UI" ]
 }
