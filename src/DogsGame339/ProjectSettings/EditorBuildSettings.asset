@@ -14,6 +14,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/combatScene.unity
     guid: 538ec063ce55c2341bd4e3fed20b03b3
+  - enabled: 1
+    path: Assets/Scenes/NewMapScene.unity
+    guid: 4d946bdc89aec08408b4c14b6285ed83
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 4c3508adec154874ea53d44587c99766
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 2a81487c4c7a2da41bb19012cbd1314a
+  - enabled: 1
+    path: Assets/Scenes/Exit Scene.unity
+    guid: 22ba81c1e33d9fc4ebd9d82c6c8f3722
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
