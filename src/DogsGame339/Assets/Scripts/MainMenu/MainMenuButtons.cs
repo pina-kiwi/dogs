@@ -1,4 +1,7 @@
+using Game.Runtime;
+using Game339.Shared.Diagnostics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuButtons : MonoBehaviour
 {
@@ -9,21 +12,35 @@ public class MainMenuButtons : MonoBehaviour
 
     public void OnStartButtonPressed()
     {
-        Debug.Log("Start Button Pressed");
+        var log = ServiceResolver.Resolve<IGameLog>();
+        log.Info("Start Button Pressed");
+        //Debug.Log("Start Button Pressed");
+        SceneManager.LoadScene("NewMapScene");
     }
 
     public void OnTutorialButtonPressed()
     {
-        Debug.Log("Tutorial Button Pressed");
+        var log = ServiceResolver.Resolve<IGameLog>();
+        log.Info("Tutorial Button Pressed");
+        
+        SceneManager.LoadScene("Tutorial");
+        //Debug.Log("Tutorial Button Pressed");
     }
     
     public void OnExitButtonPressed()
     {
-        Debug.Log("Exit Button Pressed");
+        var log = ServiceResolver.Resolve<IGameLog>();
+        log.Info("Exit Button Pressed");
+        
+        SceneManager.LoadScene("Exit Scene");
+        
+        //Debug.Log("Exit Button Pressed");
     }
     
     public void OnTitleButtonPressed()
     {
-        Debug.Log("Title Button Pressed");
+        var log = ServiceResolver.Resolve<IGameLog>();
+        log.Info("Title Button Pressed");
+        //Debug.Log("Title Button Pressed");
     }
 }
