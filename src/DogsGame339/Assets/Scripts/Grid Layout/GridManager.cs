@@ -65,10 +65,10 @@ public class GridManager : MonoBehaviour
 
     Vector2 getRandomTile()
     {
-        float x = Random.Range(0,width-1);
-        float y = Random.Range(0,height-1);
+        int x = Random.Range(0, width);
+        int y = Random.Range(0, height);
         
-        return new Vector2(x,y);
+        return new Vector2(x, y);
     }
 
     void Place(GameObject placeable)
@@ -79,6 +79,6 @@ public class GridManager : MonoBehaviour
         var spawnedPlaceable = Instantiate(placeable, new Vector3(randomTile.x, randomTile.y, 10), Quaternion.identity);
         //spawnedPlaceable.name = name + ": " + randomTile.x + ", " + randomTile.y + ", " + randomTile.z;
         
-        placeable.transform.position = randomTile;
+        spawnedPlaceable.transform.position = randomTile;
     }
 }
