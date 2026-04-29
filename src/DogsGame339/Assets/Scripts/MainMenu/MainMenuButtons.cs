@@ -9,6 +9,8 @@ public class MainMenuButtons : MonoBehaviour
     private GameObject tutorialButton;
     private GameObject exitButton;
     private GameObject titleButton;
+    private GameObject backTutorialButton;
+    private GameObject backExitButton;
 
     public void OnStartButtonPressed()
     {
@@ -43,4 +45,20 @@ public class MainMenuButtons : MonoBehaviour
         log.Info("Title Button Pressed");
         //Debug.Log("Title Button Pressed");
     }
+
+    public void OnBackButtonPressed()
+    {
+        var log = ServiceResolver.Resolve<IGameLog>();
+        log.Info("Back tutorial Button Pressed");
+        SceneManager.LoadScene("MainMenu");
+        
+    }
+
+    public void OnBackExitButtonPressed()
+    {
+        var log = ServiceResolver.Resolve<IGameLog>();
+        log.Info("Back Exit Button Pressed");
+        SceneManager.LoadScene("MainMenu");
+    }
+
 }
