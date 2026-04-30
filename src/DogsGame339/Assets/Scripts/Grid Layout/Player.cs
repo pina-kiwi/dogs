@@ -1,14 +1,21 @@
+using Game.Runtime;
+using Game339.Shared.Diagnostics;
 using UnityEngine;
+using UnityEngine.AdaptivePerformance;
 using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float tileSize = 1f;
-    public SpriteRenderer spriteRenderer;
-
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float tileSize = 1f;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    
     private Vector3 targetPos;
     private bool isMoving = false;
+    private int points = 0;
+    
+    public GameView gameView;
+    public GridManager gridManager;
 
     void Start()
     {
@@ -40,6 +47,7 @@ public class Player : MonoBehaviour
         }
     }
     
+    //copied from chloe's work
     Vector2 GetCardinalDirection(Vector2 input)
     {
         if (Mathf.Abs(input.x) > Mathf.Abs(input.y))
@@ -86,4 +94,19 @@ public class Player : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, angleToRotate, 0);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        var log = ServiceResolver.Resolve<IGameLog>();
+        log.Info("Trigger Entered: " + collision.name);
+
+        if (collision.CompareTag("Bone"))
+        {
+            collision.gameObject.SetActive(false);
+            points++;
+            
+            gameView.SetBoneText(points);
+            
+            log.Info($"Points: {points}");
+        }
+    }
 }

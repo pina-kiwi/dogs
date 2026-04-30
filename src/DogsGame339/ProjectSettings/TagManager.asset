@@ -6,6 +6,8 @@ TagManager:
   tags:
   - dog
   - Heart
+  - poop
+  - Bone
   layers:
   - Default
   - TransparentFX
