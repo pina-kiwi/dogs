@@ -1,3 +1,4 @@
+using Game.Runtime;
 using Game339.Shared.Diagnostics;
 using Game339.Shared.Services.Implementation;
 using UnityEngine;
@@ -5,17 +6,21 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
-    public int width, height;
-    public Tile tile;
-    public GameObject collectable;
-    public GameObject smallDog;
-    public GameObject player;
+    [SerializeField] private int width, height;
+    [SerializeField] private Tile tile;
     
-    public SpriteRenderer spriteRenderer;
+    [SerializeField] private GameObject collectable;
+    [SerializeField] private int numCollectables;
+    
+    [SerializeField] private GameObject enemy;
+    [SerializeField] private int numEnemies;
+    [SerializeField] private GameObject player;
+    
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     private readonly IGameLog _gameLog;
 
-    public Transform cam;
+    [SerializeField] private Transform cam;
 
     public GridManager(IGameLog gameLog)
     {
@@ -25,9 +30,10 @@ public class GridManager : MonoBehaviour
     void Start()
     {
         GenerateGrid();
+        PlacePlayer();
         PlaceDogs();
         PlaceCollectables();
-        PlacePlayer();
+        
     }
     
     void GenerateGrid()
@@ -54,13 +60,15 @@ public class GridManager : MonoBehaviour
     private void PlaceDogs()
     {
         //randomize dog placement
-        Place(smallDog);
+        for (int i = 0; i < numEnemies; i++)
+            Place(enemy);
     }
 
     private void PlaceCollectables()
     {
         //randomize bone placement
-        Place(collectable);
+        for (int i = 0; i < numCollectables; i++)
+            Place(collectable);
     }
 
     Vector2 getRandomTile()
@@ -74,11 +82,26 @@ public class GridManager : MonoBehaviour
     void Place(GameObject placeable)
     {
         Vector3 randomTile = getRandomTile();
-        //_gameLog.Info($"Placing {placeable.name} at {randomTile}");
+        
         //Debug.Log(randomTile);
         var spawnedPlaceable = Instantiate(placeable, new Vector3(randomTile.x, randomTile.y, 10), Quaternion.identity);
         //spawnedPlaceable.name = name + ": " + randomTile.x + ", " + randomTile.y + ", " + randomTile.z;
         
+        //log method blow
+        var log = ServiceResolver.Resolve<IGameLog>();
+        log.Info($"Placing {placeable.name} at {randomTile}");
+        //end log
+        
         spawnedPlaceable.transform.position = randomTile;
+    }
+
+    public int getWidth()
+    {
+        return width;
+    }
+
+    public int getHeight()
+    {
+        return height;
     }
 }

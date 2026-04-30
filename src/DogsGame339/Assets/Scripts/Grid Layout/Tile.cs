@@ -1,12 +1,14 @@
 using System;
+using Game.Runtime;
+using Game339.Shared.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Tile : MonoBehaviour
 {
-    public Sprite baseColor, offsetColor;
-    public SpriteRenderer spriteRenderer;
-    public GameObject highlight;
+    [SerializeField] private Sprite baseColor, offsetColor;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private GameObject highlight;
 
     public void Init(bool isOffset)
     {
@@ -15,7 +17,9 @@ public class Tile : MonoBehaviour
 
     void OnMouseEnter()
     {
-        Debug.Log("Hovering " + name);
+        var log = ServiceResolver.Resolve<IGameLog>();
+        log.Info($"Hovering {name}");
+        //Debug.Log("Hovering " + name);
         highlight.SetActive(true);
     }
 
@@ -28,6 +32,4 @@ public class Tile : MonoBehaviour
     {
         highlight.SetActive(false);
     }
-    
-    
 }
