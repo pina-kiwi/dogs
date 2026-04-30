@@ -14,7 +14,6 @@ public class Player : MonoBehaviour
     private bool isMoving = false;
     private int points = 0;
     
-    public GameView gameView;
     public GridManager gridManager;
 
     void Start()
@@ -103,8 +102,9 @@ public class Player : MonoBehaviour
         {
             collision.gameObject.SetActive(false);
             points++;
-            
-            gameView.SetBoneText(points);
+
+            var model = ServiceResolver.Resolve<GameStateModel>();
+            model.BoneCount.value = points;
             
             log.Info($"Points: {points}");
         }

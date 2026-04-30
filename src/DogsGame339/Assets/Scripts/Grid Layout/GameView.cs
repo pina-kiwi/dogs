@@ -1,22 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
+using Game.Runtime;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class GameView : MonoBehaviour
+public class GameView : ObserverMonoBehaviour
 {
     public TextMeshProUGUI boneText;
-    
-    // Start is called before the first frame update
-    private void Start()
+
+    protected override void Subscribe()
     {
-        SetBoneText(0);
+        var model = ServiceResolver.Resolve<GameStateModel>();
+        model.BoneCount.onValueChanged += SetBoneText;
+    }
+
+    protected override void Unsubscribe()
+    {
+        var model = ServiceResolver.Resolve<GameStateModel>();
+        model.BoneCount.onValueChanged -= SetBoneText;
     }
 
     // Create a standalone function that can update the 'countText' UI and
     // check if all the bones have been collected
-    public void SetBoneText(int bone)
+    private void SetBoneText(int bone)
     {
         if (boneText == null)
         {

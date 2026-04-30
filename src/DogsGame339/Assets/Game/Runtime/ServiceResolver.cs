@@ -32,6 +32,9 @@ namespace Game.Runtime
             
             var stringService = new StringService(logger);
             container.RegisterSingletonInstance<IStringService>(stringService);
+
+            var gameStateModel = new GameStateModel();
+            container.RegisterSingletonInstance(gameStateModel);
             
             return container;
         });
