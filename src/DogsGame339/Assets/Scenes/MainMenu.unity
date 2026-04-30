@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   mainMenuBackgroundMusic: {fileID: 2120953704}
-  mainMenuMusic: {fileID: 8300000, guid: 4dba258d64c2cbd4e9e6b1a872cc0358, type: 3}
+  mainMenuMusic: {fileID: 8300000, guid: 18d177f1ee0a04a49bb0934208edc4c0, type: 3}
   startButtonSound: {fileID: 0}
   tutorialButtonSound: {fileID: 0}
   exitButtonSound: {fileID: 0}
