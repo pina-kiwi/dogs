@@ -2,7 +2,7 @@ using Game.Runtime;
 using TMPro;
 using UnityEngine;
 
-public class GameView : ObserverMonoBehaviour
+public class BoneView : ObserverMonoBehaviour
 {
     public TextMeshProUGUI boneText;
 
@@ -24,7 +24,7 @@ public class GameView : ObserverMonoBehaviour
     {
         if (boneText == null)
         {
-            Debug.LogError("boneText is not assigned in GameView!");
+            Debug.LogError("boneText is not assigned in BoneView!");
             return;
         }
 

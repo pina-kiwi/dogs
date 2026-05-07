@@ -6,16 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/_OBSOLETE/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/walkingScene.unity
+    path: Assets/Scenes/_OBSOLETE/walkingScene.unity
     guid: 031972538f859204f8b91e4d3b444a8f
   - enabled: 1
-    path: Assets/Scenes/combatScene.unity
+    path: Assets/Scenes/_OBSOLETE/combatScene.unity
     guid: 538ec063ce55c2341bd4e3fed20b03b3
   - enabled: 1
-    path: Assets/Scenes/NewMapScene.unity
+    path: Assets/Scenes/GameScene.unity
     guid: 4d946bdc89aec08408b4c14b6285ed83
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Tutorial.unity
     guid: 2a81487c4c7a2da41bb19012cbd1314a
   - enabled: 1
-    path: Assets/Scenes/Exit Scene.unity
+    path: Assets/Scenes/ExitScene.unity
     guid: 22ba81c1e33d9fc4ebd9d82c6c8f3722
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
