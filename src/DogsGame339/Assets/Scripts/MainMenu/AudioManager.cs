@@ -4,13 +4,12 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
     public AudioSource mainMenuBackgroundMusic;
+    public AudioSource buttonSounds;
 
 
     public AudioClip mainMenuMusic;
-    public AudioClip startButtonSound;
-    public AudioClip tutorialButtonSound;
-    public AudioClip exitButtonSound;
     public AudioClip titleButtonSound;
+    public AudioClip otherButtonSound;
 
     void Awake()
     {
@@ -29,9 +28,21 @@ public class AudioManager : MonoBehaviour
         PlayMainMenuBackgroundMusic(mainMenuMusic);
     }
 
-private void PlayMainMenuBackgroundMusic(AudioClip clip)
+    private void PlayMainMenuBackgroundMusic(AudioClip clip)
     {
         mainMenuBackgroundMusic.PlayOneShot(clip);
     }
+
+    public void PlayOtherButtonSound()
+    {
+        buttonSounds.PlayOneShot(otherButtonSound);
+    }
+
+    public void PlayTitleButtonSound()
+    {
+        buttonSounds.PlayOneShot(titleButtonSound);
+    }
     
+    
+
 }
