@@ -8,7 +8,6 @@ namespace Game339.Shared.Services
         int CalculateBones(int changeAmount);
         
         void AddBone();
-        void StealBones(string attackerName, int bonesToSteal);
         void StealBones(EnemyDog attacker);
     }
 }

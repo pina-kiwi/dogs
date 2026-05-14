@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 244925373879516059}
   - component: {fileID: -2366954012641340033}
   m_Layer: 0
-  m_Name: playerNoLeash
+  m_Name: PlayerNoLeash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

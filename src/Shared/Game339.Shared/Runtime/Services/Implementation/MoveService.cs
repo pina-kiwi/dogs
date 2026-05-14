@@ -1,48 +1,50 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using Game339.Shared.Diagnostics;
+using Game339.Shared.Infastructure.DataTypes;
+using Game339.Shared.Infastructure.Diagnostics;
 using Game339.Shared.Models;
-using Direction = Game339.Shared.GridPosition.Direction;
+using Direction = Game339.Shared.Infastructure.DataTypes.GridPosition.Direction;
 
 namespace Game339.Shared.Services.Implementation
 {
     public class MoveService : I_MoveService
     {
         private readonly IGameLog _log;
-        private readonly (int rowNum, int colNum) _gridSize;
         private readonly Random _random;
+        private readonly int _numRows, _numCols;
 
-        public MoveService((int rowNum, int colNum) gridSize, IGameLog gameLog)
+        public MoveService((int numRows, int numColumns) gridDimensions, IGameLog gameLog)
         {
+            if (gridDimensions.numRows < 1 || gridDimensions.numColumns < 1) throw new ArgumentOutOfRangeException(nameof(gridDimensions));
             _log = gameLog;
-            _gridSize = gridSize;
             _random = new();
+            (_numRows, _numCols) = gridDimensions;
         }
-        
+
+        public (int numRows, int numColumns) GridDimensions => (_numRows, _numCols);
+
         public bool IsValidPosition(int row, int column)
         {
-            if (0 > row || row >= _gridSize.rowNum) return false;
-            if (0 > column || column >= _gridSize.colNum) return false;
-            return true;
+            if (0 > row || row >= _numRows) return false;
+            return 0 <= column && column < _numCols;
         }
         
         public bool IsValidPosition(GridPosition position) => IsValidPosition(position.row, position.col);
 
-        public void Move(Character character, GridPosition position)
+        public void Move(GridEntity gridEntity, GridPosition position)
         {
-            int row = Math.Clamp(position.row, 0, _gridSize.rowNum-1);
-            int column = Math.Clamp(position.col, 0, _gridSize.colNum-1);
+            int row = Math.Clamp(position.row, 0, _numRows-1);
+            int column = Math.Clamp(position.col, 0, _numCols-1);
             position = (row, column);
             
-            while (character.Position != position) StepTowards(character, position);
-            _log.Info($"{character.Name} moved to row {position.row}, column {position.col}");
+            while (gridEntity.Position != position) StepTowards(gridEntity, position);
+            _log.Info($"{gridEntity.Name} moved to row {position.row}, column {position.col}");
         }
 
-        private void StepTowards(Character character, GridPosition targetPosition)
+        private void StepTowards(GridEntity gridEntity, GridPosition targetPosition)
         {
             bool reverseCheckOrder = _random.Next(0, 2) == 0;
-            var currentPosition = character.Position;
+            GridPosition currentPosition = gridEntity.Position;
             Direction? moveDirection = null;
 
             if (reverseCheckOrder) goto columnCheck;
@@ -60,23 +62,24 @@ namespace Game339.Shared.Services.Implementation
             if (reverseCheckOrder) goto rowCheck;
             
             end:
-            character.Move(moveDirection!.Value);
+            if (moveDirection != null) gridEntity.Step(moveDirection.Value);
+            else throw new NullReferenceException();
         }
 
-        public void MoveRandom(Character character, int tilesToMove)
+        public void MoveRandom(GridEntity gridEntity, int tilesToMove)
         {
             for (int i = 0; i < tilesToMove; i++)
             {
-                StepRandom(character);
+                StepRandom(gridEntity);
             }
-            _log.Info($"{character.Name} moved to row {character.Position.row}, column {character.Position.col}");
+            _log.Info($"{gridEntity.Name} moved to row {gridEntity.Position.row}, column {gridEntity.Position.col}");
         }
 
-        private void StepRandom(Character character)
+        private void StepRandom(GridEntity gridEntity)
         {
             Direction? randomDirection = null;
 
-            List<Direction> directions = Enum.GetValues(typeof(Direction)).Cast<Direction>().ToList();
+            var directions = Enum.GetValues(typeof(Direction)).Cast<Direction>().ToList();
 
             while (directions.Count > 0)
             {
@@ -88,12 +91,13 @@ namespace Game339.Shared.Services.Implementation
                 else break;
             }
 
-            character.Move(randomDirection!.Value);
+            if (randomDirection != null) gridEntity.Step(randomDirection.Value);
+            else throw new NullReferenceException();
             
             bool _IsValidDirection(Direction? direction)
             {
                 if (direction == null) return false;
-                GridPosition projectedPosition = GridPosition.Calculate(character.Position, direction.Value);
+                GridPosition projectedPosition = GridPosition.Calculate(gridEntity.Position, direction.Value);
                 
                 return IsValidPosition(projectedPosition);
             }

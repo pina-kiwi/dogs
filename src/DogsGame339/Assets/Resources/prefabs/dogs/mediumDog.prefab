@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7772952960737479665}
   - component: {fileID: 2396334947812556720}
   m_Layer: 0
-  m_Name: mediumDog
+  m_Name: MediumDog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

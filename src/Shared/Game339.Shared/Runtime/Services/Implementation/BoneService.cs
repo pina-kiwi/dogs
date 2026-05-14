@@ -1,5 +1,5 @@
 using System;
-using Game339.Shared.Diagnostics;
+using Game339.Shared.Infastructure.Diagnostics;
 using Game339.Shared.Models;
 
 namespace Game339.Shared.Services.Implementation
@@ -7,47 +7,38 @@ namespace Game339.Shared.Services.Implementation
     public class BoneService : I_BoneService
     {
         private readonly IGameLog _log;
-        private readonly GameState _game;
-        private readonly int _maxBones;
+        private readonly PlayerDog _player;
         
-        private string PlayerDog => _game.Player.Name;
-        
-        public int BoneCount => _game.PlayerBones.Value;
+        public int BoneCount => _player.NumBones.Value;
 
-        public BoneService(int maxBones, GameState gameState, IGameLog gameLog)
+        public BoneService(PlayerDog player, IGameLog gameLog)
         {
             _log = gameLog;
-            _game = gameState;
-            _maxBones = maxBones;
+            _player = player;
         }
 
-        public int CalculateBones(int changeAmount)
-        {
-            return Math.Clamp(BoneCount + changeAmount, 0, _maxBones);
-        }
+        public int CalculateBones(int changeAmount) => Math.Clamp(BoneCount + changeAmount, 0, _player.MaxBones);
 
         public void AddBone()
         {
             int initialBones = BoneCount;
             int remainingBones = CalculateBones(1);
-            _game.SetBones(remainingBones);
+            _player.SetBones(remainingBones);
             
             bool bonesAlreadyMaxed = initialBones == remainingBones;
-            string foundBoneMessage = $"{PlayerDog} found a bone, ";
+            string foundBoneMessage = $"{_player.Name} found a bone, ";
             foundBoneMessage += bonesAlreadyMaxed ? "but they couldn't hold any more!" : $"they now have {BoneCount}!";
             
             _log.Info(foundBoneMessage);
         }
         
-        public void StealBones(string attackerName, int bonesToSteal)
+        public void StealBones(EnemyDog attacker)
         {
-            int remainingBones = CalculateBones(-bonesToSteal);
+            int remainingBones = CalculateBones(-attacker.BonesToSteal);
             int lostBones = BoneCount - remainingBones;
 
-            _game.SetBones(remainingBones);
-            _log.Info($"{attackerName} took {lostBones} bones from {PlayerDog}, they have {BoneCount} left!");
+            _player.SetBones(remainingBones);
+            _log.Info($"{attacker.Name} took {lostBones} bones from {_player.Name}, they have {BoneCount} left!");
         }
-
-        public void StealBones(EnemyDog attacker) => StealBones(attacker.Name, attacker.BonesToSteal);
     }
 }

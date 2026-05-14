@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1035076205274135527}
   - component: {fileID: -6045553030454454664}
   m_Layer: 0
-  m_Name: bone
+  m_Name: Bone
   m_TagString: Bone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
